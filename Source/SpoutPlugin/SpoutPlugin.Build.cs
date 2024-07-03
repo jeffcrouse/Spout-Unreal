@@ -106,14 +106,13 @@ namespace UnrealBuildTool.Rules
 
             // Implemented this method for copying DLL to packaged project's Binaries folder
             // https://answers.unrealengine.com/questions/842286/specify-dll-location-using-plugin-in-cooked-projec.html
-            if ((Target.Platform == UnrealTargetPlatform.Win64) || (Target.Platform == UnrealTargetPlatform.Win32))
+            if (Target.Platform == UnrealTargetPlatform.Win64)
             {
-                string PlatformString = (Target.Platform == UnrealTargetPlatform.Win64) ? "amd64" : "x86";
 
                 PublicIncludePaths.Add(Path.Combine(ThirdPartyPath, "Spout", "include"));
-                PublicAdditionalLibraries.Add(Path.Combine(ThirdPartyPath, "Spout", "lib", PlatformString, "Spout.lib"));
+                PublicAdditionalLibraries.Add(Path.Combine(ThirdPartyPath, "Spout", "lib", "amd64", "Spout.lib"));
 
-                string pluginDLLPath = Path.Combine(ThirdPartyPath, "Spout", "lib", PlatformString, "Spout.dll");
+                string pluginDLLPath = Path.Combine(ThirdPartyPath, "Spout", "lib", "amd64", "Spout.dll");
                 string binariesPath = CopyToProjectBinaries(pluginDLLPath, Target);
                 System.Console.WriteLine("Using Spout DLL: " + binariesPath);
                 RuntimeDependencies.Add(binariesPath);

@@ -1,6 +1,8 @@
 # Spout-Unreal
 This is a [Spout](http://spout.zeal.co/) Plugin for Unreal Engine. It allows you to send and receive textures using the Spout framework.
 
+NOTE: This fork is an attempt to update the plugin for UE5.4 and beyond, but it DOESN'T YET WORK. See here: https://forums.unrealengine.com/t/help-updating-spout-plugin/1925413
+
 Sender and Receiver, DirectX 11 only.
 
 * [Available Versions](#available-versions)
@@ -9,10 +11,6 @@ Sender and Receiver, DirectX 11 only.
 * [Install Example](#install-example)
 * [Packaged game](#packaged-game)
 
-## Available Versions
-* [4.24](https://github.com/TrigonVirgo/Spout-Unreal/tree/4.24)
-* **[4.27](https://github.com/TrigonVirgo/Spout-Unreal/tree/4.27) <-- Current Selection**
-* [5.0](https://github.com/TrigonVirgo/Spout-Unreal/tree/5.0)
 
 # Installation and Use
 
@@ -20,54 +18,54 @@ Sender and Receiver, DirectX 11 only.
 
 2. Create a new C++ First person Project.
 
-![Image 1](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_01.png)
+![Image 1](images/SpoutExample_Instructions_01.png)
 
 3. You should see it Generating code...
 
-![Image 2](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_02.png)
+![Image 2](images/SpoutExample_Instructions_02.png)
 
 4. The Unreal project will open in the editor, and a Visual Studio project will also open.
 
-![Image 3](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_03.png)
+![Image 3](images/SpoutExample_Instructions_03.png)
 
 5. Close the Unreal project.
 
 6. In the project directory, create a Plugins folder.
 
-![Image 4](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_04.png)
+![Image 4](images/SpoutExample_Instructions_04.png)
 
 7. Download the Spout-UE4 repository (zip file) and put it in the Plugins directory.
 
-![Image 5](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_05.png)
+![Image 5](images/SpoutExample_Instructions_05.png)
 
 8. *(Optional)* Download ExampleSpout.zip (from the project GitHub page). Unzip the contents into the Content folder.
 
-![Image 6](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_06.png)
+![Image 6](images/SpoutExample_Instructions_06.png)
 
 9. In the project directory, open the .uproject file. Press Yes when asked if you'd like to rebuild the SpoutPlugin module.
 
-![Image 7](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_07.png)
+![Image 7](images/SpoutExample_Instructions_07.png)
 
 It will start to build.
 
-![Image 8](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_08.png)
+![Image 8](images/SpoutExample_Instructions_08.png)
 
 10. Once the project opens, go to Settings > Plugins.
 
-![Image 9](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_09.png)
+![Image 9](images/SpoutExample_Instructions_09.png)
 
 11. Make sure the Spout Plugin is enabled. If necessary, restart.
 
-![Image 10](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_10.png)
+![Image 10](images/SpoutExample_Instructions_10.png)
 
 12. *(Optional)* Open the ExampleSpout > Spout project and press Play. Configure the Sender and Receiver names to work with other software.
 
-![Image 11](https://L05.github.io/Spout-UE4/images/SpoutExample_Instructions_11.png)
+![Image 11](images/SpoutExample_Instructions_11.png)
 
 
 ## Sending Spout
 
-This is done with the **Spout sender** node which can send texture either from the Game viewport or from a Render Targert 2D: 
+This is done with the **Spout sender** node which has can send textures either from the Game viewport or from a Render Targert 2D: 
   * **Game Viewport** sends the image of the viewport, but please note that it doesn't work in standalone or packaged game.
   * **TextureRenderTarget2D** in which case you should create a _SceneCaptureComponent2D_ and a *Render target 2D* which you should reference in the node.
 
@@ -82,7 +80,7 @@ Use **Close Sender** node to close Spouts. The best way is to connect it to **Ev
 * load Spout scene
 * if you encounter compile errors you have to delete and re-insert identical nodes
 
-[ExampleSpout_4.27.zip](http://L05.github.io/Spout-UE4/exampleSpoutUE4/ExampleSpout_4.27.zip) *(Updated on 2/6/2022)*
+[ExampleSpout_5.0.zip](http://L05.github.io/Spout-UE4/exampleSpoutUE4/ExampleSpout_5.0.zip) *(Updated on 2/6/2022)*
 
 ![CaptureSpout2](http://aledel.github.io/Spout-UE4/images/spout2.jpg)
 This image corresponds to the "Spout" scene. 

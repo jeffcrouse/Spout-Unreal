@@ -1,5 +1,5 @@
-#include "SpoutPluginPrivatePCH.h"
 #include "../Public/SpoutBPFunctionLibrary.h"
+#include "SpoutPluginPrivatePCH.h"
 
 #include <string>
 #include <iostream>
@@ -30,13 +30,13 @@ void DestroyTexture(UTexture2D*& Texture)
 	if (Texture){
 		Texture->RemoveFromRoot();
 
-		if (Texture->Resource)
+		if (Texture->GetResource())
 		{
-			BeginReleaseResource(Texture->Resource);
+			BeginReleaseResource(Texture->GetResource());
 			FlushRenderingCommands();
 		}
 
-		Texture->MarkPendingKill();
+		Texture->MarkAsGarbage();
 		Texture = nullptr;
 	}else{
 		UE_LOG(SpoutLog, Warning, TEXT("Texture is ready"));
@@ -93,7 +93,7 @@ void ResetTexture(UTexture2D*& Texture, UMaterialInstanceDynamic*& MaterialInsta
 	Texture->AddToRoot();
 	Texture->UpdateResource();
 	//UE_LOG(SpoutLog, Warning, TEXT("Texture is ready???????333333"));
-	SenderStruct->Texture2DResource = (FTextureResource*)Texture->Resource;
+	SenderStruct->Texture2DResource = (FTextureResource*)Texture->GetResource();
 
 	////////////////////////////////////////////////////////////////////////////////
 	ResetMatInstance(Texture, MaterialInstance);
@@ -210,14 +210,14 @@ FSenderStruct* RegisterReceiver(FName spoutName){
 
 	if (FAILED(openResult)) {
 		UE_LOG(SpoutLog, Error, TEXT("--FAIL--___Open Shared Resource___---"));
-		return false;
+		return NULL;
 
 	}
 	UE_LOG(SpoutLog, Warning, TEXT("--starting...--___Create Shader Resource View___---"));
 	HRESULT createShaderResourceViewResult = g_D3D11Device->CreateShaderResourceView(newFSenderStruc->sharedResource, NULL, &newFSenderStruc->rView);
 	if (FAILED(createShaderResourceViewResult)) {
 		UE_LOG(SpoutLog, Error, TEXT("--FAIL--___Create Shader Resource View___---"));
-		return false;
+		return NULL;
 
 	}
 
@@ -226,7 +226,7 @@ FSenderStruct* RegisterReceiver(FName spoutName){
 
 	if (tex == nullptr) {
 		UE_LOG(SpoutLog, Error, TEXT("---|||------||||----"));
-		return false;
+		return NULL;
 	}
 	D3D11_TEXTURE2D_DESC description;
 	tex->GetDesc(&description);
@@ -260,7 +260,7 @@ FSenderStruct* RegisterReceiver(FName spoutName){
 			newFSenderStruc->texTemp = NULL;
 		}
 		UE_LOG(SpoutLog, Error, TEXT("Error creating temporal textura"));
-		return false;
+		return NULL;
 
 	}
 	
@@ -420,7 +420,7 @@ bool USpoutBPFunctionLibrary::SpoutSender(FName spoutName, ESpoutSendTextureFrom
 			return false;
 		}
 		textureRenderTarget2D->TargetGamma = targetGamma;
-		baseTexture = (ID3D11Texture2D*)textureRenderTarget2D->Resource->TextureRHI->GetTexture2D()->GetNativeResource();
+		baseTexture = (ID3D11Texture2D*)textureRenderTarget2D->GetResource()->TextureRHI->GetTexture2D()->GetNativeResource();
 		break;
 	default:
 		break;

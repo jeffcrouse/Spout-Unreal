@@ -1,7 +1,7 @@
 // Some copyright should be here...
 
+#include "../Public/SpoutModule.h"
 #include "SpoutPluginPrivatePCH.h"
-
 #include "Core.h"
 #include "Modules/ModuleManager.h"
 //#include "IPluginManager.h"

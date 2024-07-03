@@ -80,9 +80,9 @@ Use **Close Sender** node to close Spouts. The best way is to connect it to **Ev
 * load Spout scene
 * if you encounter compile errors you have to delete and re-insert identical nodes
 
-[ExampleSpout_5.0.zip](http://L05.github.io/Spout-UE4/exampleSpoutUE4/ExampleSpout_5.0.zip) *(Updated on 2/6/2022)*
+[ExampleSpout.zip](ExampleSpout.zip) 
 
-![CaptureSpout2](http://aledel.github.io/Spout-UE4/images/spout2.jpg)
+![CaptureSpout2](images/spout2.jpg)
 This image corresponds to the "Spout" scene. 
 
 ## Packaged game

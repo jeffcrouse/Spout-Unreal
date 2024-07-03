@@ -5,7 +5,6 @@ NOTE: This fork is an attempt to update the plugin for UE5.4 and beyond, but it 
 
 Sender and Receiver, DirectX 11 only.
 
-* [Available Versions](#available-versions)
 * [Installation and Use](#installation-and-use)
 * [Sending Spout](#sending-spout)
 * [Install Example](#install-example)
